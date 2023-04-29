@@ -17,6 +17,9 @@ int main(void)
 	x=getBit(M1_di_PORT,PORT_M1_di);
 	setZero(M1_di_PORT,PORT_M1_di);
 	x=getBit(M1_di_PORT,PORT_M1_di);
+
+	setOne(LD_DDR, DDR_L1); //Set the led one to output
+
     while (1) 
     {
 		x=getBit(M1_di_PORT,PORT_M1_di);
