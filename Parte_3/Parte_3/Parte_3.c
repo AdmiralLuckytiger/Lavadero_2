@@ -53,3 +53,11 @@ void turnOnL1(){
 void turnOffL1(){
 	setZero(LD_PORT, PORT_L1);
 }
+
+void startBelt(){
+	M6_en_PORT = BELT_SPEED;
+}
+
+void stopBelt(){
+	M6_en_PORT = 0;
+}
