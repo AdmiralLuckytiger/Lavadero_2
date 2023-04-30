@@ -23,6 +23,39 @@ int setCallbackSafeStop(void (*fptr)()){
 return 0;
 }
 
+int SafeStop(){
+	// Stop barrier
+
+	// Stop vertical brushes
+
+	// Stop horizontal brushes
+
+	// Stop horizontal drayer
+
+	// Wait until btn is unpressed
+
+	// Get down barrier
+
+	// Get down vertical brushes
+
+	// Get down horizontal brushes
+
+	// Stop horizontal drayer
+
+	// Wait until reset
+
+return 0;
+}
+
+int blockCarWhash(){
+	// Inabilitate motors and Leds
+
+	// Wait until reset
+
+return 0;
+}
+//////////////////////////////////////////////////////////
+// Interruptions
 ISR(INT0_vect){
 	if(functionPointerStop != NULL) functionPointerStop();
 }

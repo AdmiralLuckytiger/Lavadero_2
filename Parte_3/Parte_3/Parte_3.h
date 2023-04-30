@@ -16,5 +16,6 @@
 
 int setUpSafeStop();
 int setCallbackSafeStop(void (*fptr)());
+int SafeStop();
 
 #endif /* PARTE_3_H_ */
