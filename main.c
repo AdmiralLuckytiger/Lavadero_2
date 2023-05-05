@@ -17,6 +17,16 @@ int main(void)
 	x=getBit(M1_di_PORT,PORT_M1_di);
 	setZero(M1_di_PORT,PORT_M1_di);
 	x=getBit(M1_di_PORT,PORT_M1_di);
+	
+	setupLED_1();
+	setupBelt();
+	setCallbackMsec(LED_1);
+	startBelt();
+	
+	waitsec(2);
+	
+	stopBelt();
+
     while (1) 
     {
 		x=getBit(M1_di_PORT,PORT_M1_di);
