@@ -17,11 +17,15 @@ int main(void)
 	x=getBit(M1_di_PORT,PORT_M1_di);
 	setZero(M1_di_PORT,PORT_M1_di);
 	x=getBit(M1_di_PORT,PORT_M1_di);
-
-	setOne(LD_DDR, DDR_L1); //Set the led 1 pin as an output
-	setOne(M6_di_DDR, DDR_M6_di); //Set the M6 direction pin as an output
-	setOne(M6_en_DDR, DDR_M6_en); //Set the M6 en pin as an output
-	setOne(M6_di_PORT, PORT_M6_di); //Set M6 rotation direction to right
+	
+	setupLED_1();
+	setupBelt();
+	setCallbackMsec(LED_1);
+	startBelt();
+	
+	waitsec(2);
+	
+	stopBelt();
 
     while (1) 
     {

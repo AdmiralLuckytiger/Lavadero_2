@@ -9,8 +9,8 @@
 #include "General.h"
 
 // Variables globales
-uint32_t s = 0;
-uint32_t ms = 0;
+volatile uint32_t s = 0;
+volatile uint32_t ms = 0;
 
 // Funciones de trabajo
 void (*functionPointerSec)();
@@ -40,14 +40,16 @@ return 0;
 }
 
 int waitsec(uint32_t ds){
-	uint32_t init = s;
-	while( s < init + ds ){}
+	uint32_t delaySec =  s;
+	while(s < delaySec+ds){}
 return 0;
 }
 
 int waitms(uint32_t dms){
 	uint32_t init = ms;
-	while( ms < init + dms ){}	
+	while( ms < init + dms ){
+		dms++;
+	}	
 return 0;	
 }
 

@@ -14,7 +14,7 @@
 
 #define CYCLE_WORKING 1
 #define CYCLE_STOPPED 0
-#define BELT_SPEED 77
+
 //Funciones de trabajo parte 3
 
 int setUpSafeStop();
@@ -24,5 +24,9 @@ void turnOnL1();
 void turnOffL1();
 void startBelt();
 void stopBelt();
+void setupLED_1();
+void setupBelt();
+void LED_1();
+void readState(); 
 
 #endif /* PARTE_3_H_ */

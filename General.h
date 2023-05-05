@@ -10,14 +10,15 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stddef.h>
-//	Construcción de libreria
+//	Construcciï¿½n de libreria
 #ifndef GENERAL_H_
 #define GENERAL_H_
+#include "Parte_3.h"
 
-// Definición de macros de trabajo 
+// Definiciï¿½n de macros de trabajo 
 	#define setOne(Register,bit)  (Register |= bit )
 	#define setZero(Register,bit) (Register &= ~bit)
-// Redefinición de constantes 
+// Redefiniciï¿½n de constantes 
 	// Caracteristicas del microprocesador
 		#define uCFreq 8000000
 	
@@ -117,6 +118,7 @@
 		#define PORT_M5_en (1 << PK3)
 		#define DDR_M5_en  (1 << DDK3)
 		#define PIN_M5_en  (1 << PINK3)
+		
 		// Motor M6 => Cinta de arrastre
 			// Direction => PCINT5
 		#define M6_di_PORT PORTB
