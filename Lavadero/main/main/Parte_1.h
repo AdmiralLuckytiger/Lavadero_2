@@ -58,13 +58,7 @@
 #define VECT_SW2 INT1_vect
 #define VECT_SW3 INT2_vect
 
-
-int sucio=0;
-int humedo=0;
-int  estado_sensores[12]={0,0,0,0,0,0,0,0,0,0,0,0}; // hay doce sensores en el tunel de lavado (los nuestros van del 3 al 9);
-
 void parada_emergencia();
-
 void reset_rodillos();
 
 // Interfaz publica

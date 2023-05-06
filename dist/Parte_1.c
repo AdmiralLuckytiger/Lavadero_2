@@ -1,5 +1,10 @@
 #include "Parte_1.h"
 
+// Global variables 
+int sucio=0;
+int humedo=0;
+int  estado_sensores[12]={0,0,0,0,0,0,0,0,0,0,0,0}; // hay doce sensores en el tunel de lavado (los nuestros van del 3 al 9);
+
 void Horizontal_Setup()
 {
 	cli();

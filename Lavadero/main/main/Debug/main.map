@@ -39,10 +39,6 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
- .bss.estado_sensores
-                0x00000000       0x18 main.o
- .bss.humedo    0x00000000        0x2 main.o
- .bss.sucio     0x00000000        0x2 main.o
  .text          0x00000000        0x0 Parte_1.o
  .data          0x00000000        0x0 Parte_1.o
  .bss           0x00000000        0x0 Parte_1.o
@@ -66,10 +62,6 @@ Discarded input sections
  .text          0x00000000        0x0 Parte_3.o
  .data          0x00000000        0x0 Parte_3.o
  .bss           0x00000000        0x0 Parte_3.o
- .bss.estado_sensores
-                0x00000000       0x18 Parte_3.o
- .bss.humedo    0x00000000        0x2 Parte_3.o
- .bss.sucio     0x00000000        0x2 Parte_3.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -502,6 +494,7 @@ END GROUP
                 0x00800205                s
  .bss.estado_sensores
                 0x00800209       0x18 Parte_1.o
+                0x00800209                estado_sensores
  *(COMMON)
  COMMON         0x00800221        0x4 General.o
                 0x00800221                functionPointerSec
@@ -598,29 +591,29 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x160d
+.debug_info     0x00000000     0x153f
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xba9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega640/avr5/crtatmega640.o
  .debug_info    0x00000ba9      0x3db General.o
- .debug_info    0x00000f84      0x12f main.o
- .debug_info    0x000010b3      0x20f Parte_1.o
- .debug_info    0x000012c2      0x34b Parte_3.o
+ .debug_info    0x00000f84       0xae main.o
+ .debug_info    0x00001032      0x20f Parte_1.o
+ .debug_info    0x00001241      0x2fe Parte_3.o
 
-.debug_abbrev   0x00000000      0xf7b
+.debug_abbrev   0x00000000      0xf23
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb08 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega640/avr5/crtatmega640.o
  .debug_abbrev  0x00000b08      0x1a7 General.o
- .debug_abbrev  0x00000caf       0xae main.o
- .debug_abbrev  0x00000d5d       0xc9 Parte_1.o
- .debug_abbrev  0x00000e26      0x155 Parte_3.o
+ .debug_abbrev  0x00000caf       0x68 main.o
+ .debug_abbrev  0x00000d17       0xc9 Parte_1.o
+ .debug_abbrev  0x00000de0      0x143 Parte_3.o
 
-.debug_line     0x00000000      0xb4b
+.debug_line     0x00000000      0xb3f
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1ee C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega640/avr5/crtatmega640.o
  .debug_line    0x000001ee      0x305 General.o
  .debug_line    0x000004f3       0x56 main.o
- .debug_line    0x00000549      0x37d Parte_1.o
- .debug_line    0x000008c6      0x285 Parte_3.o
+ .debug_line    0x00000549      0x371 Parte_1.o
+ .debug_line    0x000008ba      0x285 Parte_3.o
 
 .debug_frame    0x00000000      0x4d8
  *(.debug_frame)
@@ -634,12 +627,12 @@ END GROUP
  .debug_str     0x00000000      0x3e0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega640/avr5/crtatmega640.o
  .debug_str     0x000003e0      0x229 General.o
                                 0x25d (size before relaxing)
- .debug_str     0x00000609       0x44 main.o
-                                0x197 (size before relaxing)
- .debug_str     0x0000064d       0xb7 Parte_1.o
+ .debug_str     0x00000609       0x1e main.o
+                                0x171 (size before relaxing)
+ .debug_str     0x00000627       0xdd Parte_1.o
                                 0x241 (size before relaxing)
  .debug_str     0x00000704       0x97 Parte_3.o
-                                0x277 (size before relaxing)
+                                0x251 (size before relaxing)
 
 .debug_loc      0x00000000      0x6c0
  *(.debug_loc)

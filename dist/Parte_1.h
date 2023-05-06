@@ -41,8 +41,6 @@
 #define TOCA   0
 #define NOTOCA 1
 
-
-
 #define OFF_M3     (PIN_M3&0b11110111)
 #define UP_M3      (PIN_M3|0b00001010)
 #define DOWN_M3    ((0b00001000|(PIN_M3&0b11111101)))
@@ -58,13 +56,7 @@
 #define VECT_SW2 INT1_vect
 #define VECT_SW3 INT2_vect
 
-
-int sucio=0;
-int humedo=0;
-int  estado_sensores[12]={0,0,0,0,0,0,0,0,0,0,0,0}; // hay doce sensores en el tunel de lavado (los nuestros van del 3 al 9);
-
 void parada_emergencia();
-
 void reset_rodillos();
 
 // Interfaz publica
