@@ -170,5 +170,5 @@ ISR(PCINT0_vect){
 }
 
 ISR(PCINT2_vect){
-	if(getBit(SOB_PIN,PIN_SO12)) numCar--;
+	if(!getBit(SOB_PIN,PIN_SO12)) numCar--;
 }
