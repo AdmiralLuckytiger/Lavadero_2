@@ -41,6 +41,8 @@
 #define TOCA   0
 #define NOTOCA 1
 
+
+
 #define OFF_M3     (PIN_M3&0b11110111)
 #define UP_M3      (PIN_M3|0b00001010)
 #define DOWN_M3    ((0b00001000|(PIN_M3&0b11111101)))
@@ -60,7 +62,7 @@ void parada_emergencia();
 void reset_rodillos();
 
 // Interfaz publica
-void setUpParte_1(void);
-void Parte_1(void);
+int setUpParte_1(void);
+int Parte_1(void);
 
 #endif /* PARTE_1_H_ */

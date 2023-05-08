@@ -4,7 +4,7 @@
  * Created : 23/04/2023 18:20:57
  *  Author : Eduardo Palou de Comasema Juame
  *	version: 1.1.1
- *	note: previous optimization
+ *	note: previous optimization &&
  */ 
 
 #include "General.h"
@@ -12,7 +12,8 @@
 // Variables globales
 volatile uint32_t s = 0;
 volatile uint32_t ms = 0;
-uint8_t numCar = 0;
+volatile uint8_t numCar = 0;
+volatile uint8_t Stop = 0;
 
 // Funciones de trabajo
 void (*functionPointerSec)();
@@ -79,7 +80,7 @@ return 0;
  * 
  * @return int 
  */
-int getsec(void){
+uint32_t getsec(void){
 	return s;
 }
 /**
@@ -87,7 +88,7 @@ int getsec(void){
  * 
  * @return int 
  */
-int getms(void){
+uint32_t getms(void){
 	return ms;
 }
 /**
@@ -117,12 +118,9 @@ return 0;
  */
 int getState(void) {
 	uint8_t acc = 0; 
-	acc += getBit(M1_en_PIN, PIN_M1_en);
-	acc += getBit(M2_en_PIN, PIN_M2_en);
-	acc += getBit(M3_en_PIN, PIN_M3_en);
-	acc += getBit(M4_en_PIN, PIN_M4_en);
-	acc += getBit(M5_en_PIN, PIN_M5_en);
-	acc += getBit(M6_en_PIN, PIN_M6_en);
+	//acc += getBit(M1_en_PIN, PIN_M1_en);
+	//acc += getBit(M2_en_PIN, PIN_M2_en);
+	acc += getBit(M6_di_PIN, PIN_M6_di);
 	return acc > 0 ? CYCLE_WORKING : CYCLE_STOPPED ;
 }
 /**
@@ -139,6 +137,7 @@ int getNumberCar(){
  */
 int setUpInterrupts(){
 	PCMSK0 |= 0b00000101;
+	PCICR  |= 0b00000001;
 return 0;
 }
 // Public interface for General library
@@ -153,6 +152,13 @@ int setUpGeneral(){
 return 0;
 }
 
+int stop(){
+	Stop = 1;
+}
+
+int getStop(){
+	return Stop;
+}
 ////////////////////////////
 // Interrupts handlers
 ISR(TIMER1_COMPA_vect){
@@ -162,13 +168,14 @@ ISR(TIMER1_COMPA_vect){
 
 ISR(TIMER3_COMPA_vect){
 	ms++;
+	
 	if (functionPointerMsec != NULL) functionPointerMsec();
 }
 
 ISR(PCINT0_vect){
-	if(getBit(SOB_PIN,PIN_SO1)) numCar++;
+	if(!getBit(SOB_PIN,PIN_SO1)) numCar++;
+	if(!getBit(SOB_PIN,PIN_SO12)){
+		if(numCar > 0 ) numCar--;
+	}
 }
 
-ISR(PCINT2_vect){
-	if(getBit(SOB_PIN,PIN_SO12)) numCar--;
-}

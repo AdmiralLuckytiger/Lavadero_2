@@ -249,8 +249,8 @@
 		int setCallbackMsec( void (*fptr)() );
 		int waitsec(uint32_t); 
 		int waitms(uint32_t);
-		int getsec(void);
-		int getms(void);
+		uint32_t getsec(void);
+		uint32_t getms(void);
 
 	// Funciones de estado de Maqueta
 		int getState(); 
@@ -261,5 +261,7 @@
 
 	// Funciones publicas
 		int setUpGeneral();
+		int stop();
+		int getStop();
 
 #endif /* GENERAL_H_ */

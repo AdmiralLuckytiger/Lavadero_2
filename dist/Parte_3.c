@@ -10,6 +10,7 @@
 
 //Variables Globales
 void (*functionPointerStop)();
+volatile uint8_t cycle_state_old = 0;
 
 //Funciones de trabajo 
 
@@ -22,6 +23,7 @@ void (*functionPointerStop)();
 int SafeStop(void) {
 	stopBelt();
 	parada_emergencia();
+	stop();
 return 0;
 }
 
@@ -74,20 +76,27 @@ void turnOffL1(){
  * 
  */
 void LED_1(){
-	int cycle_sate = getState(); 
+	int cycle_state = getState(); 
 	if (cycle_state==CYCLE_WORKING){
-		if((getms()/500)%2==0 && getms()%500==0){ //If ms is a pair multiple of 500
+		if((getms()/500)%2==0 ){ //If ms is a pair multiple of 500
 			turnOnL1();
 		}
-		else if((getms()/500)%2==1 && getms()%500==0){ //If ms is an impair multiple of 500
+		else if((getms()/500)%2==1){ //If ms is an impair multiple of 500
 			turnOffL1();
 		}
 	}
-	if (cycle_state==CYCLE_STOPPED){
+	else if (cycle_state==CYCLE_STOPPED){
+		if(cycle_state_old==CYCLE_WORKING){
+			turnOffL1();
+		}
 		if((getms()%10000)==0){
 			turnOnL1();
 		}
+		if((getms()%10500)==0){
+			turnOffL1();
+		}
 	}
+	cycle_state_old = cycle_state; 
 }
 // Cinta de arrastre 
 /**
@@ -97,7 +106,7 @@ void LED_1(){
 void setupBelt(){
 	setOne(M6_di_DDR, DDR_M6_di); //Set the M6 direction pin as an output
 	setOne(M6_en_DDR, DDR_M6_en); //Set the M6 en pin as an output
-	setOne(M6_en_PORT, PORT_M6_di); //Set M6 rotation direction to right
+	setOne(M6_en_PORT, PORT_M6_en); //Set M6 rotation direction to right
 }
 /**
  * @brief Activate Belt motor
@@ -128,7 +137,13 @@ void setUpParte_3(void){
  * 
  */
 void Parte_3(void){
-	getNumberCar() > 0 ? startBelt() : stopBelt();
+	if(getNumberCar() > 0){
+		if(!getBit(M6_di_PIN,PIN_M6_di))
+			startBelt();
+	}
+	else{
+		stopBelt();
+	}
 }
 //////////////////////////////////////////////////////////
 // Interruption handlers
