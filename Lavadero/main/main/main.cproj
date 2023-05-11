@@ -30,18 +30,18 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.44.1" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
     <avrtool>com.atmel.avrdbg.tool.avrdragon</avrtool>
-    <avrtoolserialnumber>00A200055397</avrtoolserialnumber>
+    <avrtoolserialnumber>00A200047544</avrtoolserialnumber>
     <avrdeviceexpectedsignature>0x1E9608</avrdeviceexpectedsignature>
     <com_atmel_avrdbg_tool_avrdragon>
       <ToolOptions>
@@ -51,7 +51,7 @@
         <InterfaceName>JTAG</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.avrdragon</ToolType>
-      <ToolNumber>00A200055397</ToolNumber>
+      <ToolNumber>00A200047544</ToolNumber>
       <ToolName>AVR Dragon</ToolName>
     </com_atmel_avrdbg_tool_avrdragon>
     <avrtoolinterface>JTAG</avrtoolinterface>
@@ -136,13 +136,28 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="barrera.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="General.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="General.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="lavadoV.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="parada.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="parte2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="parte2.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Parte_1.c">
@@ -155,6 +170,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Parte_3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="setup2.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

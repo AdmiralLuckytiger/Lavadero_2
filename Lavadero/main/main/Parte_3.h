@@ -9,6 +9,7 @@
 //Librerias de trabajo 
 #include "General.h"
 #include "Parte_1.h"
+#include "parte2.h"
 
 #ifndef PARTE_3_H_
 #define PARTE_3_H_

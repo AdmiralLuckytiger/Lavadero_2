@@ -66,7 +66,7 @@
 		#define M2_en_PIN  PINK
 		
 		#define PORT_M2_en (1 << PK6)
-		#define DDR_M2_en  (1 << DDK4)
+		#define DDR_M2_en  (1 << DDK6)
 		#define PIN_M2_en  (1 << PINK6)
 		// Motor M3 => Rodillo horizontal altura
 			// Direction => PCINT1
@@ -263,5 +263,6 @@
 		int setUpGeneral();
 		int stop();
 		int getStop();
-
+		char getFlagSO1();
+		void setFlagSO1(int);
 #endif /* GENERAL_H_ */

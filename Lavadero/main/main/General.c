@@ -14,6 +14,7 @@ volatile uint32_t s = 0;
 volatile uint32_t ms = 0;
 volatile uint8_t numCar = 0;
 volatile uint8_t Stop = 0;
+volatile char Flag_SO1 = 0; // 0 (No flanco) 1 (Flanco)
 
 // Funciones de trabajo
 void (*functionPointerSec)();
@@ -117,11 +118,7 @@ return 0;
  * @return int 
  */
 int getState(void) {
-	uint8_t acc = 0; 
-	//acc += getBit(M1_en_PIN, PIN_M1_en);
-	//acc += getBit(M2_en_PIN, PIN_M2_en);
-	acc += getBit(M6_di_PIN, PIN_M6_di);
-	return acc > 0 ? CYCLE_WORKING : CYCLE_STOPPED ;
+	return getBit(M6_en_PIN, PIN_M6_en) > 0 ? CYCLE_WORKING : CYCLE_STOPPED ;
 }
 /**
  * @brief Return the number of cars in the carwhaser
@@ -159,6 +156,14 @@ int stop(){
 int getStop(){
 	return Stop;
 }
+
+char getFlagSO1(){
+	return Flag_SO1;
+}
+
+void setFlagSO1(int valor){
+	Flag_SO1 = valor;
+}
 ////////////////////////////
 // Interrupts handlers
 ISR(TIMER1_COMPA_vect){
@@ -168,7 +173,6 @@ ISR(TIMER1_COMPA_vect){
 
 ISR(TIMER3_COMPA_vect){
 	ms++;
-	
 	if (functionPointerMsec != NULL) functionPointerMsec();
 }
 
@@ -177,5 +181,6 @@ ISR(PCINT0_vect){
 	if(!getBit(SOB_PIN,PIN_SO12)){
 		if(numCar > 0 ) numCar--;
 	}
+	Flag_SO1 = !Flag_SO1;
 }
 

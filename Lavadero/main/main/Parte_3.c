@@ -23,6 +23,7 @@ volatile uint8_t cycle_state_old = 0;
 int SafeStop(void) {
 	stopBelt();
 	parada_emergencia();
+	parada2();
 	stop();
 return 0;
 }
@@ -106,21 +107,21 @@ void LED_1(){
 void setupBelt(){
 	setOne(M6_di_DDR, DDR_M6_di); //Set the M6 direction pin as an output
 	setOne(M6_en_DDR, DDR_M6_en); //Set the M6 en pin as an output
-	setOne(M6_en_PORT, PORT_M6_en); //Set M6 rotation direction to right
+	setOne(M6_di_PORT, PORT_M6_di); //Set M6 rotation direction to right
 }
 /**
  * @brief Activate Belt motor
  * 
  */
 void startBelt(){
-	setOne(M6_di_PORT, PORT_M6_di);
+	setOne(M6_en_PORT, PORT_M6_en);
 }
 /**
  * @brief Deactivate Belt motor
  * 
  */
 void stopBelt(){
-	setZero(M6_di_PORT, PORT_M6_di);
+	setZero(M6_en_PORT, PORT_M6_en);
 }
 /**
  * @brief Public setup for Parte_3 library
@@ -138,7 +139,7 @@ void setUpParte_3(void){
  */
 void Parte_3(void){
 	if(getNumberCar() > 0){
-		if(!getBit(M6_di_PIN,PIN_M6_di))
+		if(!getBit(M6_en_PIN,PIN_M6_en))
 			startBelt();
 	}
 	else{
