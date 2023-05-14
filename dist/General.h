@@ -256,6 +256,7 @@
 		int getState(); 
 		int getNumberCar();
 
+
 	// Funciones de interrupción
 		int setUpInterrupts();
 

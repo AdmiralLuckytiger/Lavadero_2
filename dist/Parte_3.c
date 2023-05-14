@@ -99,6 +99,17 @@ void LED_1(){
 	}
 	cycle_state_old = cycle_state; 
 }
+
+void LED_4_5(){
+	if(!getBit(SOB_PORT, PIN_SO10) || getBit(SOB_PORT, PIN_SO12)){
+		setOne(LD_PORT, PORT_L4);
+		setZero(LD_PORT, PORT_L5);
+	}
+	else if(getBit(SOB_PORT, PIN_SO10) && getBit(SOB_PORT, PIN_SO12)){
+		setOne(LD_PORT, PORT_L5);
+		setZero(LD_PORT, PORT_L4);
+	}
+}
 // Cinta de arrastre 
 /**
  * @brief Setup the registers of the belt
@@ -132,6 +143,7 @@ void setUpParte_3(void){
 	setupLED_1();
 	setUpSafeStop();
 	setCallbackMsec(LED_1);
+	setCallbackMsec(LED_4_5); 
 }
 /**
  * @brief Public function for Parte_3 library

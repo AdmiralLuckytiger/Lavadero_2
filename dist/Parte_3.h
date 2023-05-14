@@ -25,6 +25,7 @@ void setupLED_1(void);
 void turnOnL1(void);
 void turnOffL1(void);
 void LED_1(void);
+void LED_4_5(); 
 
 // Cinta de arrastre 
 void startBelt(void);
