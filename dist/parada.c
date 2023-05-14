@@ -1,4 +1,4 @@
-#include "parte2.h"
+#include "Parte_2.h"
 
 
 //parar todos los motores

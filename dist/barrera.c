@@ -1,4 +1,4 @@
-#include "parte2.h"
+#include "Parte_2.h"
 
 //BARRERA 
 /*  El setup de la barrera debe comprobar que la barrera est� bajada y bajarla si no lo est� SO2
@@ -8,6 +8,11 @@
  cuando SO2! y/o contador de SW1 sea 4 -> M1 OFF ----FIN----
 */
 
+/**
+ * @brief Inicialización registros y variables asociados a la barrera.
+ * 
+ * @return int 
+ */
 int setup_barrera(void){	
 	Flag_Barrera = 0;
 	cPulsos = 0;
@@ -35,7 +40,11 @@ int setup_barrera(void){
 	return 0;
 }
 
-
+/**
+ * @brief Control logico asociado a la barrera.
+ * 
+ * @return int 
+ */
 int barrera(void){
 	//Flag_SO1 = !getBit(SOB_PIN,PIN_SO1);
 	if(getFlagSO1() && !Flag_Barrera && !stopBarrera){ //Si detecta un coche
@@ -70,8 +79,4 @@ int barrera(void){
 	}
 	
 return 0;
-}
-
-uint8_t getPulsos(void){
-	return cPulsos;
 }

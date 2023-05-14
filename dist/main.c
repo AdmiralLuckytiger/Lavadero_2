@@ -3,13 +3,13 @@
  *
  * Created: 23/04/2023 16:51:46
  * Author : Group 2 of Lavadero
- * Note: Alimentación no se conecta
+ * Note: Alimentaciï¿½n no se conecta
  * version: 1.0.0
  */ 
 
 #include "General.h"
 #include "Parte_1.h"
-#include "parte2.h"
+#include "Parte_2.h"
 #include "Parte_3.h"
 
 int main(void)

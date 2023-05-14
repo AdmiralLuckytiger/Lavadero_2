@@ -1,6 +1,11 @@
-#include "parte2.h"
+#include "Parte_2.h"
 
 //GLOBAL A LAS 4 FUNCIONES
+/**
+ * @brief Interfaz publica para configuración Parte_2
+ * 
+ * @return int 
+ */
 int setUpParte_2(void){
 	cli();
 	//INT3
@@ -17,8 +22,6 @@ int setUpParte_2(void){
 
 //ISR INTERRUPCIONES
 //
-
-
 ISR(INT3_vect){
 	cPulsos++;
 }

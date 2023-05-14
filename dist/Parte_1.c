@@ -8,24 +8,16 @@ int  estado_sensores[12]={0,0,0,0,0,0,0,0,0,0,0,0}; // hay doce sensores en el t
 void Horizontal_Setup()
 {
 	cli();
-
-
 	setOne(M3_en_DDR,DDR_M3_en);
 	setOne(M3_di_DDR,DDR_M3_di);
 	setOne(M4_en_DDR,DDR_M4_en);
 	setOne(M5_en_DDR,DDR_M5_en);
 	setOne(M5_di_DDR,DDR_M5_di);
-	
-	//DDRB=DDRB|0b00001010; 
-	//DDRK=DDRK|0b10001010;
 
 	TCCR5A = 0x00;
 	TCCR5B = 0x0C;
 	OCR5A  = 3124;
 	TIMSK5 = 0x02;
-	
-	EICRA |=  0b00111100; //(tick) INT3:0 incluyen  PD1 Y PD2 y es asíncrona (?) 0x11 habilita solo flancos de subida
-	//EIMSK |=  0b00000110;  //(tick) Enable sólo de PD1 Y PD2 bits
 
 	sei();
 }
@@ -117,52 +109,34 @@ void reset_rodillos(){
 ISR(TIMER5_COMPA_vect)  //interrupción para los fines de carrera SW2
 {
 	if((PIN_SO3&0b00010000)!=0b00010000) estado_sensores[3]= 1;
-
 	else estado_sensores[3]= 0;
 
 	if((PIN_SO4&0b01000000)!=0b01000000) estado_sensores[4]= 1;
-
 	else estado_sensores[4]= 0;
 
 	if((PIN_SO5&0b01000000)!=0b01000000) estado_sensores[5]= 1;
-
 	else estado_sensores[5]= 0;
 
 	if((PIN_SO7&0b00010000)!=0b00010000) estado_sensores[7]= 1;
-
 	else estado_sensores[7]= 0;
 
 	if((PIN_SO8&0b01000000)!=0b01000000) estado_sensores[8]= 1;
-
 	else estado_sensores[8]= 0;
 
 	if((PIN_SO9&0b10000000)!=0b10000000) estado_sensores[9]= 1;
-
 	else estado_sensores[9]= 0;
 
 }
 
 ISR(INT1_vect) //interrupción para los fines de carrera SW2
 {
-		PORT_M3=OFF_M3;
-		PORT_M4=OFF_M4;
-		
-	//if(PORT_M3 != UP_M3)	
-	//{
-		//PORT_M3=OFF_M3;
-		//PORT_M4=OFF_M4;
-	//}
+	PORT_M3=OFF_M3;
+	PORT_M4=OFF_M4;
 }
 
 ISR(INT2_vect) //interrupción para los fines de carrera SW3
 {
-	
 	PORT_M5=OFF_M5;
-	
-	//if(PORT_M5 != UP_M5)
-	//{
-		//PORT_M5=OFF_M5;
-	//}
 }
 
 int setUpParte_1(void){
