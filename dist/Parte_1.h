@@ -1,5 +1,12 @@
-#include <avr/io.h>
-#include <avr/interrupt.h>
+/*
+ * General.c
+ *
+ * 	Created : 23/04/2023 18:20:57
+ *  Author : Eduardo Palou de Comasema Juame
+ *	version: 1.5.1
+ *	note: 
+ */ 
+
 #include "General.h"
 
 #ifndef PARTE_1_H_

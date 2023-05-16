@@ -2,7 +2,7 @@
  * Parte_3.c
  *
  * Created: 23/04/2023 16:51:46
- * Author : Group 2 of Lavadero
+ * Author : Eduardo Palou de Comasema Jaume - 18268
  * Note: Alimentaci�n no se conecta
  * version: 1.0.0
  */ 

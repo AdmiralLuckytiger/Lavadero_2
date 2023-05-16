@@ -2,7 +2,7 @@
  * General.h
  *
  * Created : 23/04/2023 16:52:43
- *  Author : Eduardo Palou de Comasema Jaume
+ *  Author : Eduardo Palou de Comasema Jaume - 18268
  *	version: 1.1.1
  */ 
 
@@ -20,6 +20,7 @@
 // Redefinici�n de constantes 
 	// Caracteristicas del microprocesador
 		#define uCFreq 8000000
+		#define delay_Barrera_Lavado_Vertical 1000
 	// Estado de maqueta 
 		#define CYCLE_WORKING 1
 		#define CYCLE_STOPPED 0
@@ -253,17 +254,17 @@
 		uint32_t getms(void);
 
 	// Funciones de estado de Maqueta
-		int getState(); 
-		int getNumberCar();
+		int getState(void); 
+		int getNumberCar(void);
 
 	// Funciones de interrupción
-		int setUpInterrupts();
+		int setUpInterrupts(void);
 
 	// Funciones publicas
-		int setUpGeneral();
-		int stop();
-		int getStop();
-		char getFlagSO1();
+		int setUpGeneral(void);
+		int stop(void);
+		int getStop(void);
+		char getFlagSO1(void);
 		void setFlagSO1(int);
 		void downPetiton(void);
 		void incNumberCar(void);

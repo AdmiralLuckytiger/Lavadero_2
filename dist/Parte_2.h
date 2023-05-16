@@ -1,9 +1,13 @@
-#include "General.h"
-#include <avr/io.h>
-#include <stdint.h>
-#include <stdlib.h>
-#include <avr/interrupt.h>
+/*
+ * General.c
+ *
+ * 	Created : 23/04/2023 18:20:57
+ *  Author : Eduardo Palou de Comasema Juame
+ *	version: 1.9.1
+ *	note: 
+ */ 
 
+#include "General.h"
 
 #ifndef PARTE_2_H_
 #define PARTE_2_H_

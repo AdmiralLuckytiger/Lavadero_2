@@ -1,7 +1,7 @@
 /*
  * General.c
  *
- * Created : 23/04/2023 18:20:57
+ * 	Created : 23/04/2023 18:20:57
  *  Author : Eduardo Palou de Comasema Juame
  *	version: 1.5.1
  *	note: previous optimization &&
@@ -192,12 +192,12 @@ ISR(TIMER3_COMPA_vect){
 }
 
 ISR(PCINT0_vect){
-	// interrupción activada por SO1
+	// interrupciï¿½n activada por SO1
 	if(getBit(SOB_PIN,PIN_SO1) != old_state_SO1){
 		if(!getBit(SOB_PIN,PIN_SO1)) petition = 1;
 		Flag_SO1 = !Flag_SO1;
 	}
-	// Interrupción activada por SO1
+	// Interrupciï¿½n activada por SO1
 	if(getBit(SOB_PIN,PIN_SO12) != old_state_SO12){
 		if(!getBit(SOB_PIN,PIN_SO12) && !getBit(SOD_PIN,PIN_SO11) ){
 			if(numCar > 0 ){

@@ -2,8 +2,8 @@
  * Parte_3.c
  *
  * Created: 24/04/2023 18:42:29
- *  Author: Eduardo Palou de Comasema Jaume
- * version: 1.0.0
+ *  Author: Eduardo Palou de Comasema Jaume and Damien
+ * version: 1.3.0
  */ 
 
 #include "Parte_3.h"
@@ -14,7 +14,9 @@ volatile uint8_t cycle_state_old = 0;
 
 //Funciones de trabajo 
 
+//////////////////////////////////////////////////////
 // Parada de emergencia
+
 /**
  * @brief Configure the routine for an emergency stop
  * 
