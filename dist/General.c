@@ -2,8 +2,9 @@
  * General.c
  *
  * 	Created : 23/04/2023 18:20:57
- *  Author : Eduardo Palou de Comasema Juame
- *	version: 1.5.1
+ *  Author : Eduardo Palou de Comasema Jaume - 18268
+			Damien Saga - 22442
+ *	version: 1.5.2
  *	note: previous optimization &&
  */ 
 
@@ -22,6 +23,7 @@ volatile uint8_t petition = 0;
 // Funciones de trabajo
 void (*functionPointerSec)();
 void (*functionPointerMsec)();
+void (*functionPointerMsec_2)();
 
 //////////////////////////////
 // Funciones de manejo de registros
@@ -106,7 +108,7 @@ int setCallbackSec( void (*fptr)() ) {
 return 0;
 }
 /**
- * @brief Set the Callback Msec object
+ * @brief Set the Callback Msec function
  * 
  * @param fptr 
  * @return int 
@@ -115,14 +117,27 @@ int setCallbackMsec( void (*fptr)() ) {
 	functionPointerMsec = fptr;
 return 0;
 }
+
 /**
- * @brief Get if any motor is on
+ * @brief Set an additional Callback Msec function
+ * 
+ * @param fptr 
+ * @return int 
+ */
+int setCallbackMsec_2( void (*fptr)() ) {
+	functionPointerMsec_2 = fptr;
+return 0;
+}
+
+/**
+ * @brief Get if the facility is working
  * 
  * @return int 
  */
 int getState(void) {
 	return getBit(M6_en_PIN, PIN_M6_en) > 0 ? CYCLE_WORKING : CYCLE_STOPPED ;
 }
+
 /**
  * @brief Return the number of cars in the carwhaser
  * 
@@ -130,6 +145,7 @@ int getState(void) {
 int getNumberCar(){
 	return numCar;
 } 
+
 /**
  * @brief Set PCInt interruption registers
  * 
@@ -140,6 +156,7 @@ int setUpInterrupts(){
 	PCICR  |= 0b00000001;
 return 0;
 }
+
 // Public interface for General library
 /**
  * @brief Set the Up configuration of timers and interruptions
@@ -152,33 +169,67 @@ int setUpGeneral(){
 return 0;
 }
 
+/**
+ * @brief Set flag to stop the machine
+ * 
+ * @return int 
+ */
 int stop(){
 	Stop = 1;
 }
 
+/**
+ * @brief Return the value of flag stop
+ * 
+ * @return int 
+ */
 int getStop(){
 	return Stop;
 }
 
+/**
+ * @brief Get state of FlagSO1
+ * 
+ * @return char 
+ */
 char getFlagSO1(){
 	return Flag_SO1;
 }
 
+/**
+ * @brief Set the Flag SO1 
+ * 
+ * @param valor 
+ */
 void setFlagSO1(int valor){
 	Flag_SO1 = valor;
 }
 
+/**
+ * @brief Set down the flag petition
+ * 
+ */
 void downPetiton(void){
 	petition = 0;
 }
 
+/**
+ * @brief Get the Petition state
+ * 
+ * @return int 
+ */
+int getPetition(void){
+	return petition;
+}
+
+/**
+ * @brief Increments the number of cars in the facility
+ * 
+ */
 void incNumberCar(void){
 	numCar++;
 }
 
-int getPetition(void){
-	return petition;
-}
 ////////////////////////////
 // Interrupts handlers
 ISR(TIMER1_COMPA_vect){
@@ -189,6 +240,7 @@ ISR(TIMER1_COMPA_vect){
 ISR(TIMER3_COMPA_vect){
 	ms++;
 	if (functionPointerMsec != NULL) functionPointerMsec();
+	if (functionPointerMsec_2 != NULL) functionPointerMsec_2();
 }
 
 ISR(PCINT0_vect){

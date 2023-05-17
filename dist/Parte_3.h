@@ -2,8 +2,9 @@
  * Parte_3.h
  *
  * Created: 24/04/2023 18:41:49
- *  Author: Eduardo Palou de Comasema Jaume 
- * version: 1.0.1
+ *  Author: Eduardo Palou de Comasema Jaume - 18268
+            Damien Saga - 22442
+ * version: 1.0.2
  */ 
 
 //Librerias de trabajo 

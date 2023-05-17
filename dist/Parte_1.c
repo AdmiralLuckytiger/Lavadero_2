@@ -3,7 +3,7 @@
  *
  * 	Created : 23/04/2023 18:20:57
  *  Author : Eduardo Palou de Comasema Juame
- *	version: 1.5.1
+ *	version: 1.5.2
  *	note: 
  */ 
 
@@ -34,6 +34,25 @@ void Horizontal_Setup()
 
 	sei();
 }
+/**
+ * @brief Función de apoyo Horizontal Sucio
+ * 
+ */
+void Horizontal_Limpiar()
+{
+	if(estado_sensores[3]== 1 || estado_sensores[5]==1)
+	{
+		PORT_M3= UP_M3; // sube para evitar la colision
+	}
+	else
+	{
+		if(estado_sensores[3]==0 && estado_sensores[4]==0 && estado_sensores[5]==0)
+		{
+			sucio=0;
+		}
+		PORT_M3= OFF_M3;
+	}
+}
 
 /**
  * @brief Función de control lógico lavado horizontal 
@@ -52,6 +71,26 @@ void Horizontal_Sucio() //Por defecto se encuentra en el fin de carrera inferior
 	{
 		PORT_M3= DOWN_M3;
 		PORT_M4=OFF_M4;
+	}
+}
+
+/**
+ * @brief Función de apoyo Horizontal_humedo
+ * 
+ */
+void Horizontal_Secar()
+{
+	if(estado_sensores[7]== 1 || estado_sensores[9]==1)
+	{
+		PORT_M5= UP_M5; // sube para evitar la colision
+	}
+	else
+	{
+		if(estado_sensores[7]==0 && estado_sensores[8]==0 && estado_sensores[9]==0)
+		{
+			humedo=0;
+		}
+		PORT_M5= OFF_M5;
 	}
 }
 

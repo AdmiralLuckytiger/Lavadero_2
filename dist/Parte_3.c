@@ -2,8 +2,9 @@
  * Parte_3.c
  *
  * Created: 24/04/2023 18:42:29
- *  Author: Eduardo Palou de Comasema Jaume and Damien
- * version: 1.3.0
+ *  Author: Eduardo Palou de Comasema Jaume - 18268
+			Damien Saga - 22442
+ * version: 1.3.1
  */ 
 
 #include "Parte_3.h"

@@ -1,9 +1,10 @@
 /*
  * General.h
  *
- * Created : 23/04/2023 16:52:43
+ * 	Created : 23/04/2023 16:52:43
  *  Author : Eduardo Palou de Comasema Jaume - 18268
- *	version: 1.1.1
+			 Damien Saga - 22442
+ *	version: 1.1.2
  */ 
 
 //	Librerias de trabajo
@@ -21,6 +22,7 @@
 	// Caracteristicas del microprocesador
 		#define uCFreq 8000000
 		#define delay_Barrera_Lavado_Vertical 1000
+		#define pulsosBarrera 16
 	// Estado de maqueta 
 		#define CYCLE_WORKING 1
 		#define CYCLE_STOPPED 0
@@ -166,17 +168,17 @@
 		#define DDR_L1  (1 << DDL1)
 		#define PIN_L1  (1 << PINL1)
 		// L2
-		#define PORT_L2 (1 << PL3)
-		#define DDR_L2  (1 << DDL3)
-		#define PIN_L2  (1 << PINL3)		
+		#define PORT_L4 (1 << PL3)
+		#define DDR_L4  (1 << DDL3)
+		#define PIN_L4  (1 << PINL3)		
 		// L3
-		#define PORT_L3 (1 << PL5)
-		#define DDR_L3  (1 << DDL5)
-		#define PIN_L3  (1 << PINL5)
+		#define PORT_L5 (1 << PL5)
+		#define DDR_L5  (1 << DDL5)
+		#define PIN_L5  (1 << PINL5)
 		// L4
-		#define PORT_L4 (1 << PL7)
-		#define DDR_L4  (1 << DDL7)
-		#define PIN_L4  (1 << PINL7)	
+		#define PORT_L6 (1 << PL7)
+		#define DDR_L6  (1 << DDL7)
+		#define PIN_L6  (1 << PINL7)	
 	// Sensores
 		// REGISTROS S01-S05-S06-S12 B
 		#define SOB_PORT PORTB
@@ -248,6 +250,7 @@
 		int setupTimers(void);
 		int setCallbackSec( void (*fptr)() );
 		int setCallbackMsec( void (*fptr)() );
+		int setCallbackMsec_2( void (*fptr)() );
 		int waitsec(uint32_t); 
 		int waitms(uint32_t);
 		uint32_t getsec(void);
@@ -266,6 +269,7 @@
 		int getStop(void);
 		char getFlagSO1(void);
 		void setFlagSO1(int);
+		int getPetition(void)
 		void downPetiton(void);
 		void incNumberCar(void);
 #endif /* GENERAL_H_ */

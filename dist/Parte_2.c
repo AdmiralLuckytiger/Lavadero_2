@@ -2,8 +2,9 @@
  * General.c
  *
  * 	Created : 23/04/2023 18:20:57
- *  Author : Eduardo Palou de Comasema Juame
- *	version: 1.8.0
+ *  Author : Jorge Martínez de la Mata Gaitán - 18211
+			Eduardo Palou de Comasema Jaume - 18268
+ *	version: 1.8.1
  *	note:
  */ 
 
@@ -53,11 +54,11 @@ int setup_barrera(void){
 int barrera(void){
 	//Flag_SO1 = !getBit(SOB_PIN,PIN_SO1);
 	if(getFlagSO1() && !Flag_Barrera && !stopBarrera){ //Si detecta un coche
-		if(cPulsos < 16  && getFlagSO1()){ // Subida de la barrera
+		if(cPulsos < pulsosBarrera  && getFlagSO1()){ // Subida de la barrera
 			setOne(M1_en_PORT,PORT_M1_en);
 			startLavadoV = 1;
 		}
-		else if(cPulsos >= 16 && getFlagSO1()) { //Ha detectado dos pulsos. Barrera no se mueve y avanza el coche
+		else if(cPulsos >= pulsosBarrera && getFlagSO1()) { //Ha detectado dos pulsos. Barrera no se mueve y avanza el coche
 			//mover_cinta();
 			setZero(M1_en_PORT,PORT_M1_en);
 			Flag_Barrera = 1;
@@ -122,6 +123,15 @@ int lavadoV(void){
 // Interfaz Publica de la parte
 
 /**
+ * @brief Get the Pulsos value
+ * 
+ * @return uint8_t 
+ */
+uint8_t getPulsos(void){
+	return cPulsos;
+}
+
+/**
  * @brief Interfaz publica para configuración Parte_2
  * 
  * @return int 
@@ -145,7 +155,7 @@ int setUpParte_2(void){
  * 
  * @return int 
  */
-int parte2(void){
+int Parte_2(void){
 	barrera();
 	lavadoV();
 	return 0;
@@ -160,4 +170,10 @@ int parada2(void){
 	setZero(M1_en_PORT,PORT_M1_en);
 	setZero(M2_en_PORT,PORT_M2_en);
 	return 0;
+}
+
+///////////////////////////////////////////////////////
+// Interrupt handlers
+ISR(INT3_vect){
+	cPulsos++;
 }
