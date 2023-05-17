@@ -4,7 +4,7 @@
  * Created: 24/04/2023 18:42:29
  *  Author: Eduardo Palou de Comasema Jaume - 18268
 			Damien Saga - 22442
- * version: 1.3.1
+ * version: 1.3.2
  */ 
 
 #include "Parte_3.h"
@@ -141,7 +141,7 @@ void setUpParte_3(void){
  * 
  */
 void Parte_3(void){
-	if(getNumberCar() > 0){
+	if(getNumberCar() > 0 || getPetition()){
 		if(!getBit(M6_en_PIN,PIN_M6_en))
 			startBelt();
 	}
