@@ -4,7 +4,7 @@
  * 	Created : 23/04/2023 16:52:43
  *  Author : Eduardo Palou de Comasema Jaume - 18268
 			 Damien Saga - 22442
- *	version: 1.1.2
+ *	version: 1.1.3
  */ 
 
 //	Librerias de trabajo
@@ -269,7 +269,7 @@
 		int getStop(void);
 		char getFlagSO1(void);
 		void setFlagSO1(int);
-		int getPetition(void)
+		int getPetition(void);
 		void downPetiton(void);
 		void incNumberCar(void);
 #endif /* GENERAL_H_ */
