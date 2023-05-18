@@ -240,7 +240,7 @@ ISR(TIMER1_COMPA_vect){
 ISR(TIMER3_COMPA_vect){
 	ms++;
 	if (functionPointerMsec != NULL) functionPointerMsec();
-	if (functionPointerMsec_2 != NULL) functionPointerMsec_2();
+	//if (functionPointerMsec_2 != NULL) functionPointerMsec_2();
 }
 
 ISR(PCINT0_vect){

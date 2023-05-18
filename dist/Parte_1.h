@@ -2,7 +2,9 @@
  * General.c
  *
  * 	Created : 23/04/2023 18:20:57
- *  Author : Eduardo Palou de Comasema Juame
+ *  Author : Eduardo Palou de Comasema Juame - 18268
+             Marcos Albadejo Guijarro - 
+             Juan Mateos Budiño - 
  *	version: 1.5.1
  *	note: 
  */ 

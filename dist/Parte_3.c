@@ -4,7 +4,7 @@
  * Created: 24/04/2023 18:42:29
  *  Author: Eduardo Palou de Comasema Jaume - 18268
 			Damien Saga - 22442
- * version: 1.3.2
+ * version: 1.3.1
  */ 
 
 #include "Parte_3.h"
@@ -60,6 +60,8 @@ return 0;
  */
 void setupLED_1(){
 	setOne(LD_DDR, DDR_L1); //Set the led 1 pin as an output
+	setOne(LD_DDR, DDR_L4); //Set the led 4 pin as an output
+	setOne(LD_DDR, DDR_L5); //Set the led 5 pin as an output
 }
 /**
  * @brief Turn on the LED_1
@@ -102,6 +104,21 @@ void LED_1(){
 	}
 	cycle_state_old = cycle_state; 
 }
+
+/**
+ * @brief Función para el control lógico del semaforo
+ * 
+ */
+void LED_4_5(){
+	if(getBit(SOL_PIN, PIN_SO10)){
+			setOne(LD_PORT, PORT_L5);
+			setZero(LD_PORT, PORT_L4);
+	}
+	else if(!getBit(SOL_PIN, PIN_SO10)){
+			setOne(LD_PORT, PORT_L4);
+			setZero(LD_PORT, PORT_L5);
+	}
+}
 // Cinta de arrastre 
 /**
  * @brief Setup the registers of the belt
@@ -135,13 +152,15 @@ void setUpParte_3(void){
 	setupLED_1();
 	setUpSafeStop();
 	setCallbackMsec(LED_1);
+	//setCallbackMsec_2(LED_4_5);
 }
 /**
  * @brief Public function for Parte_3 library
  * 
  */
 void Parte_3(void){
-	if(getNumberCar() > 0 || getPetition()){
+	LED_4_5();
+	if(getNumberCar() > 0){
 		if(!getBit(M6_en_PIN,PIN_M6_en))
 			startBelt();
 	}

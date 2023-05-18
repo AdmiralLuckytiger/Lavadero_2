@@ -15,11 +15,12 @@
 
 int main(void)
 {
+	
 	setUpGeneral();
 	setUpParte_3();
 	setUpParte_2();
 	setUpParte_1();
-	
+
     while (1) 
     {
 		if(!getStop()){

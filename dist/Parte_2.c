@@ -3,7 +3,7 @@
  *
  * 	Created : 23/04/2023 18:20:57
  *  Author : Jorge Martínez de la Mata Gaitán - 18211
-			Eduardo Palou de Comasema Jaume - 18268
+			 Carola Adrados Herrero - 18001
  *	version: 1.8.1
  *	note:
  */ 

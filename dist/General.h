@@ -4,7 +4,7 @@
  * 	Created : 23/04/2023 16:52:43
  *  Author : Eduardo Palou de Comasema Jaume - 18268
 			 Damien Saga - 22442
- *	version: 1.1.3
+ *	version: 1.1.2
  */ 
 
 //	Librerias de trabajo
