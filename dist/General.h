@@ -188,7 +188,7 @@
 		#define SOL_PORT PORTL
 		#define SOL_DDR  DDRL
 		#define SOL_PIN  PINL		
-		// REGISTROS S07-S08-S09-2011 D
+		// REGISTROS S07-S08-S09-S011 D
 		#define SOD_PORT PORTD
 		#define SOD_DDR  DDRD
 		#define SOD_PIN  PIND		

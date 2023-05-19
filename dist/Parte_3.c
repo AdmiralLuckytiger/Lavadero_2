@@ -12,7 +12,9 @@
 //Variables Globales
 void (*functionPointerStop)();
 volatile uint8_t cycle_state_old = 0;
-
+int old_state_SO10 = 1;
+int old_state_SO11 = 1;
+int finSemaforo = 0;
 //Funciones de trabajo 
 
 //////////////////////////////////////////////////////
@@ -110,14 +112,29 @@ void LED_1(){
  * 
  */
 void LED_4_5(){
-	if(getBit(SOL_PIN, PIN_SO10)){
-			setOne(LD_PORT, PORT_L5);
-			setZero(LD_PORT, PORT_L4);
-	}
-	else if(!getBit(SOL_PIN, PIN_SO10)){
+	// Evaluate and execute
+	if(getBit(SOL_PIN, PIN_SO10) != old_state_SO10){ // Flanco
+		if(getBit(SOL_PIN, PIN_SO10)) { // Flanco de subida
 			setOne(LD_PORT, PORT_L4);
 			setZero(LD_PORT, PORT_L5);
+			finSemaforo = 0;
+		}
 	}
+	
+	if(getBit(SOD_PIN, PIN_SO11) != old_state_SO11){
+		if(getBit(SOD_PIN, PIN_SO11)){
+			setZero(LD_PORT, PORT_L4);
+			finSemaforo = 1;
+		}
+	}
+
+	if(getNumberCar() > 0 && finSemaforo){
+		setOne(LD_PORT, PORT_L5);
+	}
+
+	// Update state Sensor
+	old_state_SO11 = getBit(SOD_PIN, PIN_SO11);
+	old_state_SO10 = getBit(SOD_PIN, PIN_SO10);
 }
 // Cinta de arrastre 
 /**
